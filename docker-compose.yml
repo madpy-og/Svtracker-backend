@@ -1,0 +1,41 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: svtracker-backend:latest
+    container_name: svtracker-backend
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    networks:
+      - svtracker-network
+
+  # --------------------------------------------------------------------------
+  # OPSIONAL: Uncomment service di bawah jika ingin menjalankan MongoDB lokal
+  # di dalam Docker VPS (bukan menggunakan MongoDB Atlas / Cloud).
+  # --------------------------------------------------------------------------
+  # mongo:
+  #   image: mongo:7-jammy
+  #   container_name: svtracker-mongo
+  #   restart: unless-stopped
+  #   ports:
+  #     - "27017:27017"
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: admin
+  #     MONGO_INITDB_ROOT_PASSWORD: password_rahasia_kamu
+  #   volumes:
+  #     - mongo_data:/data/db
+  #   networks:
+  #     - svtracker-network
+
+networks:
+  svtracker-network:
+    driver: bridge
+
+# volumes:
+#   mongo_data:

@@ -28,6 +28,10 @@ app.use(cookieParser());
 
 connectDB();
 
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", uptime: process.uptime() });
+});
+
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/categories", categoryRoutes);
 app.use("/api/v1/cloudinary", cloudinaryRoutes);
