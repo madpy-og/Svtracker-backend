@@ -1,70 +1,61 @@
-# Svtracker - Backend API
+## Svtracker
 
-Backend RESTful API for Svtracker (Expense Tracker application), built with Express.js, MongoDB (Mongoose), and JWT authentication.
+**Svtracker** is a modern personal finance management tool designed to help users track their spending habits through an intuitive, data-driven dashboard. It transforms raw financial data into meaningful visual insights using interactive charts and real-time summaries.
+
+🌐 **Live Demo:** [https://svtracker.maddaathia.my.id](https://svtracker.maddaathia.my.id)  
+🔗 **API Endpoint:** [https://api.svtracker.maddaathia.my.id](https://api.svtracker.maddaathia.my.id)
+
+---
+
+## Repositories
+- **Frontend Repository:** [madpy-og/Svtracker](https://github.com/madpy-og/Svtracker)
+- **Backend Repository:** [madpy-og/Svtracker-backend](https://github.com/madpy-og/Svtracker-backend)
+
+---
 
 ## Tech Stack
-- **Runtime:** Node.js (v20+)
-- **Framework:** Express.js
-- **Database:** MongoDB (via Mongoose)
-- **Containerization:** Docker & Docker Compose
-- **Authentication:** JSON Web Tokens (jsonwebtoken) & bcryptjs
-- **File Upload:** Cloudinary & Multer
+
+### Languages, Frameworks & Tools
+<p align="left">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=html,css,js,ts,vite,react,tailwind,nodejs,express,mongodb&theme=dark" />
+  </a>
+</p>
 
 ---
 
-## Deploy Menggunakan Docker (VPS)
+## Getting Started (Backend)
 
-### 1. Prasyarat di VPS
-Pastikan VPS sudah terinstall **Docker** dan **Docker Compose plugin**:
-```bash
-# Ubuntu / Debian
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-sudo usermod -aG docker $USER
-```
+### Prerequisites
+- Node.js (v20+) or Docker & Docker Compose
+- MongoDB (Atlas instance or local MongoDB)
 
-### 2. Clone Repository & Setup Environment
-```bash
-git clone https://github.com/madpy-og/Svtracker-backend.git
-cd Svtracker-backend
+### Option 1: Deploy with Docker (Recommended for VPS)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/madpy-og/Svtracker-backend.git
+   cd Svtracker-backend
+   ```
+2. Setup environment variables:
+   ```bash
+   cp .env.example .env
+   nano .env
+   ```
+3. Run container:
+   ```bash
+   docker compose up -d --build
+   ```
 
-# Buat file .env dari template
-cp .env.example .env
-nano .env # sesuaikan variabel MONGO_URI, SECRET_KEY, CLIENT_URL, dll.
-```
-
-### 3. Build & Jalankan Container
-```bash
-# Jalankan container di background
-docker compose up -d --build
-
-# Cek status container
-docker compose ps
-
-# Cek log aplikasi
-docker compose logs -f backend
-```
-
-### 4. Health Check
-Kamu bisa memverifikasi status backend dengan curl:
-```bash
-curl http://localhost:3000/health
-# Response: {"status":"ok","uptime":...}
-```
-
----
-
-## Menjalankan Secara Lokal (Non-Docker)
-
+### Option 2: Run Locally (Non-Docker)
 1. Install dependencies:
    ```bash
    npm install
    ```
-2. Salin template konfigurasi:
+2. Setup environment variables:
    ```bash
    cp .env.example .env
    ```
-3. Jalankan development server:
+3. Run development server:
    ```bash
    npm run dev
    ```
